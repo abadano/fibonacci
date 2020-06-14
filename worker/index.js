@@ -18,4 +18,4 @@ subscription.on('message', (channel, message) => {
     redisClient.hset('values', message, fib(parseInt(message)));
 });
 
-subscription.subcribe('insert');
+subscription.subscribe('insert');

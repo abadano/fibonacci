@@ -14,7 +14,7 @@ function App() {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a className="App-link"chref="https://reactjs.org" target="_blank" 
+          <a className="App-link" href="https://reactjs.org" target="_blank" 
           rel="noopener noreferrer">Learn React</a>
           <Link to="/">Home</Link>
           <Link to="/other-page">Other Page</Link>
