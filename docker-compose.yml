@@ -29,6 +29,7 @@ services:
             - PGPASSWORD=postgres_password
             - PGPORT=5432
     client:
+        stdin_open: true
         build: 
             context: 
                 dockerfile: Dockerfile.dev
