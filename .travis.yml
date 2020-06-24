@@ -1,0 +1,22 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t abadanoasw/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true abadanoasw/react-test npm test
+
+after_success:
+    - docker build -t abadanoasw/fibonacci-client ./client
+    - docker build -t abadanoasw/fibonacci-nginx ./nginx
+    - docker build -t abadanoasw/fibonacci-server ./server
+    - docker build -t abadanoasw/fibonacci-worker ./worker
+    # Login to Docker CLI
+    - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
+    # Push Images to docker-hub
+    - docker push abadanoasw/fibonacci-client
+    - docker push abadanoasw/fibonacci-nginx
+    - docker push abadanoasw/fibonacci-server
+    - docker push abadanoasw/fibonacci-worker
